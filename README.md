@@ -3,7 +3,7 @@
 # 👋 Hello, I'm Aaroh Nanoti
 ### 🚀 Computer Science Student @ UTD | AI Enthusiast | Autonomous Systems Developer
 
-<img src="https://visitor-badge.laobi.icu/badge?page_id=yourusername.yourusername" alt="Profile Views" />
+<img src="https://visitor-badge.laobi.icu/badge?page_id=aarohCodes.aarohCodes" alt="Profile Views" />
 
 </div>
 
@@ -101,7 +101,7 @@ Fun_Fact: "I debug code faster than I debug my life 🐛"
 <tr>
 <td width="50%">
 
-### 🔧 [Arkos](https://github.com/yourusername/arkos)
+### 🔧 [Arkos](https://github.com/aarohCodes/arkos)
 **AI-Powered Energy Prediction System**
 
 ```python
@@ -116,7 +116,7 @@ def predict_energy():
 </td>
 <td width="50%">
 
-### 🤖 [FinHack Robo Advisor](https://github.com/yourusername/finhack-robo)
+### 🤖 [FinHack Robo Advisor](https://github.com/aarohCodes/finhack-robo)
 **ESG + Finance Chatbot**
 
 ```javascript
@@ -144,12 +144,12 @@ class RoboAdvisor {
 </div>
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&langs_count=8&theme=tokyonight"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=aarohCodes&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aarohCodes&layout=compact&langs_count=8&theme=tokyonight"/>
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=yourusername&theme=tokyonight" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=aarohCodes&theme=tokyonight" alt="GitHub Streak" />
 </div>
 
 ---
