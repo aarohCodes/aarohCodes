@@ -18,7 +18,7 @@
 ```yaml
 Name: Aaroh Nanoti
 Location: Dallas, TX
-Education: Computer Science @ University of Texas at Dallas
+Education: Computer Science
 Interests: ["Autonomous Vehicles", "ADAS", "AI/ML", "LLMs", "Energy Systems"]
 Current_Focus: "Building intelligent systems that bridge hardware and software"
 Fun_Fact: "I debug code faster than I debug my life 🐛"
@@ -71,7 +71,6 @@ Fun_Fact: "I debug code faster than I debug my life 🐛"
 ### AI/ML & Data Science
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 
@@ -80,14 +79,10 @@ Fun_Fact: "I debug code faster than I debug my life 🐛"
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
 ### Specialized Tools
 ![dSPACE ASM](https://img.shields.io/badge/dSPACE%20ASM-FF6B35?style=for-the-badge&logo=chip&logoColor=white)
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
 ![ROS](https://img.shields.io/badge/ROS-22314E?style=for-the-badge&logo=ros&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white)
-
 ---
 
 <div align="center">
