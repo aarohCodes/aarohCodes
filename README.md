@@ -1,6 +1,6 @@
 <div align="center">
   
-# 👋 Hello, I'm Aaroh Nanoti
+# 👋 Hello, I'm Aaroh
 ### 🚀 Computer Science Student | AI Enthusiast | Autonomous Systems Developer
 
 <img src="https://visitor-badge.laobi.icu/badge?page_id=aarohCodes.aarohCodes" alt="Profile Views" />
