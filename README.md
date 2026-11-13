@@ -21,8 +21,6 @@ I'm a computer science student at UT Dallas. I like problems where software has 
 - 🧠 **LLM agents** with tool calling and voice interfaces
 - ⚡ **Energy systems**: LSTM demand forecasting
 
-<sub>Fun fact: I debug code faster than I debug my life.</sub>
-
 <br clear="both"/>
 
 <img src="./assets/h-podium.svg" width="100%" alt="02 / Podium: hackathon wins" />
@@ -73,13 +71,27 @@ Robo-advisor that builds ESG-aware portfolios across risk profiles and pairs the
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/rsna-knee-abnormality-detection"><img src="./assets/p1-rsna.svg" width="100%" alt="P1 RSNA Knee: a knee MRI slice is scanned, a finding lights up, and twelve probability bars fill" /></a>
+<a href="https://github.com/aarohCodes/F1Tenth-Autonomous-Division"><img src="./assets/p1-f1tenth.svg" width="100%" alt="P1 F1TENTH: a car laps a circuit with its LiDAR fan out front" /></a>
+<b><a href="https://github.com/aarohCodes/F1Tenth-Autonomous-Division">F1TENTH Autonomous Division</a></b><br/>
+ROS 2 workspace for the F1TENTH 1/10-scale autonomous racing platform: Ackermann drive publisher and relay nodes with launch files, run against the F1TENTH gym simulator. The start of the racing stack.<br/>
+<sub><code>ROS 2</code> <code>rclpy</code> <code>Ackermann</code> <code>f1tenth_gym_ros</code></sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/Nova-UTD/1811-fall-2026"><img src="./assets/p2-nova1811.svg" width="100%" alt="P2 Nova 1811: four cameras around a car fire in turn and stitch into one panorama strip" /></a>
+<b><a href="https://github.com/Nova-UTD/1811-fall-2026">Nova 1811</a></b><br/>
+ROS 2 stack for Nova's 1811 sub-scale autonomous vehicle at UT Dallas. The car drives by gamepad and can teach-and-repeat a loop from Ouster lidar odometry and pure pursuit. My part: a gamepad mode manager (disabled, manual, autonomous), bringing up the camera link between the two on-board computers, and a 360° panorama stitched from four ZED X cameras.<br/>
+<sub><code>ROS 2 Humble</code> <code>Python</code> <code>C++</code> <code>Docker</code> <code>Jetson Orin</code> <code>ZED X</code> <code>Ouster lidar</code></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/aarohCodes/rsna-knee-abnormality-detection"><img src="./assets/p3-rsna.svg" width="100%" alt="P3 RSNA Knee: a knee MRI slice is scanned, a finding lights up, and twelve probability bars fill" /></a>
 <b><a href="https://github.com/aarohCodes/rsna-knee-abnormality-detection">RSNA Knee Abnormality Detection</a></b><br/>
 RSNA's Kaggle code competition: predict 12 knee abnormalities per MRI study, from ACL and meniscus tears to effusion and fractures. Labels expanded from multilingual radiology reports, multi-slice models, and a rank-mean ensemble blended on a clean holdout, all inside a 9-hour offline kernel. 0.938 macro-AUC on the public leaderboard.<br/>
 <sub><code>PyTorch</code> <code>DICOM</code> <code>ensembling</code> <code>Kaggle Kernels</code></sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform"><img src="./assets/p2-arkos.svg" width="100%" alt="P2 Arkos: an energy demand curve draws itself, then a forecast with a confidence band" /></a>
+<a href="https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform"><img src="./assets/p4-arkos.svg" width="100%" alt="P4 Arkos: an energy demand curve draws itself, then a forecast with a confidence band" /></a>
 <b><a href="https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform">Arkos</a></b><br/>
 AI energy advisory platform with LSTM demand forecasting, built with a team at Hack AI 2025. It analyses consumption patterns, forecasts demand, and recommends where to save. 15% improvement in energy efficiency.<br/>
 <sub><code>TensorFlow</code> <code>LSTM</code> <code>Python</code></sub>
@@ -87,35 +99,27 @@ AI energy advisory platform with LSTM demand forecasting, built with a team at H
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/OvaScope_Meta_2026"><img src="./assets/p3-ovascope.svg" width="100%" alt="P3 OvaScope: an ultrasound sweep finds a lesion, draws a box prompt, then a segmentation mask" /></a>
+<a href="https://github.com/aarohCodes/OvaScope_Meta_2026"><img src="./assets/p5-ovascope.svg" width="100%" alt="P5 OvaScope: an ultrasound sweep finds a lesion, draws a box prompt, then a segmentation mask" /></a>
 <b><a href="https://github.com/aarohCodes/OvaScope_Meta_2026">OvaScope</a></b><br/>
 Ovarian ultrasound analysis with inspectable evidence. Asks whether lesion localisation (a DINOv2 patch localiser prompting SAM 2.1) beats whole-image classification on eight MMOTU categories, then reports what the data says: bootstrap confidence intervals, a near-duplicate leakage audit, and an abstain path. Research prototype, not a diagnostic.<br/>
 <sub><code>PyTorch</code> <code>DINOv2</code> <code>SAM 2.1</code> <code>FastAPI</code> <code>Next.js</code> <code>Docker</code></sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/Jarvis"><img src="./assets/p4-jarvis.svg" width="100%" alt="P4 Jarvis: rotating reactor rings above a voice waveform" /></a>
+<a href="https://github.com/aarohCodes/Jarvis"><img src="./assets/p6-jarvis.svg" width="100%" alt="P6 Jarvis: rotating reactor rings above a voice waveform" /></a>
 <b><a href="https://github.com/aarohCodes/Jarvis">Jarvis</a></b><br/>
 A personal assistant for student life. An LLM with tool calling sits on top of my Canvas calendar, course schedule, syllabi, tasks and weather, builds a morning briefing, and pushes reminders to my phone. Web and mobile clients.<br/>
 <sub><code>FastAPI</code> <code>PostgreSQL</code> <code>Redis</code> <code>Next.js</code> <code>React Native</code> <code>Docker</code></sub>
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/F1Tenth-Autonomous-Division"><img src="./assets/p5-f1tenth.svg" width="100%" alt="P5 F1TENTH: a car laps a circuit with its LiDAR fan out front" /></a>
-<b><a href="https://github.com/aarohCodes/F1Tenth-Autonomous-Division">F1TENTH Autonomous Division</a></b><br/>
-ROS 2 workspace for the F1TENTH 1/10-scale autonomous racing platform: Ackermann drive publisher and relay nodes with launch files, run against the F1TENTH gym simulator. The start of the racing stack.<br/>
-<sub><code>ROS 2</code> <code>rclpy</code> <code>Ackermann</code> <code>f1tenth_gym_ros</code></sub>
-</td>
-<td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/CodeRed"><img src="./assets/p6-codered.svg" width="100%" alt="P6 CodeRed: a microphone listens while a scanner steps across pantry shelves" /></a>
+<td colspan="2" align="center" valign="top">
+<a href="https://github.com/aarohCodes/CodeRed"><img src="./assets/p7-codered.svg" width="50%" alt="P7 CodeRed: a microphone listens while a scanner steps across pantry shelves" /></a><br/>
 <b><a href="https://github.com/aarohCodes/CodeRed">CodeRed</a></b><br/>
 Voice-first kitchen assistant. Say the wake word, ask what's in the pantry, or scan groceries with the camera to add them to the inventory.<br/>
 <sub><code>Python</code> <code>Gemini</code> <code>ElevenLabs</code> <code>JavaScript</code></sub>
 </td>
 </tr>
 </table>
-
-<sub>Also in the garage: <a href="https://github.com/aarohCodes/FlowCraft">FlowCraft</a>, an AI productivity suite for tasks, flashcards, email triage and meeting transcripts (React, TypeScript, Supabase).</sub>
 
 <img src="./assets/h-power.svg" width="100%" alt="04 / Power unit: tech stack" />
 
@@ -135,6 +139,8 @@ Voice-first kitchen assistant. Say the wake word, ask what's in the pantry, or s
 </p>
 
 <p align="center">
+  <a href="https://www.linkedin.com/in/aarohnanoti/"><img src="./assets/btn-linkedin.svg" height="46" alt="LinkedIn" /></a>
+  &nbsp;
   <a href="mailto:aarohnanoti@gmail.com"><img src="./assets/btn-email.svg" height="46" alt="Email" /></a>
   &nbsp;
   <a href="https://github.com/aarohCodes?tab=repositories"><img src="./assets/btn-github.svg" height="46" alt="All repos" /></a>

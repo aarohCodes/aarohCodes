@@ -781,6 +781,48 @@ def art_codered() -> tuple[str, str]:
     return "".join(out), ""
 
 
+def art_nova() -> tuple[str, str]:
+    cx, cy, R, fov, T = 430, 104, 72, 100, 4
+    cams = [(0, CYAN), (90, PINK), (180, AMBER), (270, GREEN)]
+    out = []
+    for k, (ang, col) in enumerate(cams):
+        a1, a2 = math.radians(ang - fov / 2), math.radians(ang + fov / 2)
+        out.append(
+            f'<path d="M{cx},{cy} L{n(cx + R * math.sin(a1))},{n(cy - R * math.cos(a1))} A{R},{R} 0 0 1 '
+            f'{n(cx + R * math.sin(a2))},{n(cy - R * math.cos(a2))} Z" fill="{col}" fill-opacity=".1" stroke="{col}" stroke-opacity=".5">'
+            f'<animate attributeName="fill-opacity" values=".5;.08" dur="{T}s" begin="{k - T}s" repeatCount="indefinite"/></path>'
+        )
+    out.append(
+        f'<circle cx="{cx}" cy="{cy}" r="27" fill="none" stroke="{TEXT}" stroke-opacity=".6" stroke-dasharray="3 5">'
+        f'<animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="5s" repeatCount="indefinite"/></circle>'
+        f'<rect x="{cx - 8}" y="{cy - 15}" width="16" height="30" rx="5" fill="#16233f" stroke="{TEXT}" stroke-width="1.5"/>'
+        f'<rect x="{cx - 5}" y="{cy - 9}" width="10" height="6" rx="1.5" fill="{CYAN}" opacity=".8"/>'
+    )
+    sx, sy, sw, sh = 300, 188, 280, 26
+    seg = sw / 4
+    for j, k in enumerate((3, 0, 1, 2)):  # panorama order: left, front, right, back
+        out.append(
+            f'<rect x="{n(sx + j * seg)}" y="{sy}" width="{n(seg)}" height="{sh}" fill="{cams[k][1]}" fill-opacity=".2">'
+            f'<animate attributeName="fill-opacity" values=".85;.2" dur="{T}s" begin="{k - T}s" repeatCount="indefinite"/></rect>'
+        )
+    horizon = "M" + " L".join(f"{sx + i * 14},{n(sy + 14 + 6 * math.sin(i * 0.9) * math.cos(i * 0.37))}" for i in range(21))
+    out.append(
+        f'<path d="{horizon}" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.3" stroke-linejoin="round"/>'
+        + "".join(f'<path d="M{n(sx + j * seg)},{sy} v{sh}" stroke="{BG}" stroke-width="2"/>' for j in (1, 2, 3))
+        + f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="4" fill="none" stroke="#2b3f73" stroke-width="1.5"/>'
+    )
+    for j, (label, col) in enumerate((("MANUAL", CYAN), ("AUTO", GREEN), ("OFF", RED))):
+        y = 34 + j * 19
+        vals, times = keyed([0.1, 0.45, 0.1], [0, j / 3, (j + 1) / 3])
+        out.append(
+            f'<rect x="526" y="{y}" width="58" height="15" rx="7.5" fill="{col}" fill-opacity=".1" stroke="{col}" stroke-opacity=".7">'
+            f'<animate attributeName="fill-opacity" values="{vals}" keyTimes="{times}" calcMode="discrete" dur="9s" repeatCount="indefinite"/></rect>'
+            f'<text x="555" y="{y + 11}" text-anchor="middle" font-size="8.5" font-weight="700" letter-spacing="1" fill="{TEXT}">{label}</text>'
+        )
+    out.append(f'<text x="582" y="236" text-anchor="end" font-size="10" letter-spacing="1" fill="{DIM}">4 cameras, one 360° view</text>')
+    return "".join(out), ""
+
+
 # ── trophy wall ──────────────────────────────────────────────────────────────
 def wins() -> str:
     W, H = 1000, 210
@@ -909,8 +951,9 @@ def main() -> None:
         "h-radio.svg": header("05", "TEAM RADIO", CYAN, "radio", 5),
         "radar.svg": radar(),
         "footer.svg": footer(),
+        "btn-linkedin.svg": button("LINKEDIN", CYAN, 230),
         "btn-email.svg": button("EMAIL", PINK, 200),
-        "btn-github.svg": button("ALL REPOS", CYAN, 240),
+        "btn-github.svg": button("ALL REPOS", GREEN, 240),
     }
     winners = [
         ("w1-pondr.svg", "WINNER", "Pondr", "HACK AI 2026", GREEN, art_pondr),
@@ -919,12 +962,13 @@ def main() -> None:
         ("w4-quada.svg", "WINNER", "QUADA", "FINHACK 2025", AMBER, art_quada),
     ]
     grid = [
-        ("p1-rsna.svg", "P1", "RSNA Knee", "KAGGLE / KNEE MRI", PINK, art_rsna),
-        ("p2-arkos.svg", "P2", "Arkos", "HACK AI 2025", AMBER, art_arkos),
-        ("p3-ovascope.svg", "P3", "OvaScope", "MEDICAL IMAGING", CYAN, art_ovascope),
-        ("p4-jarvis.svg", "P4", "Jarvis", "PERSONAL AI ASSISTANT", CYAN, art_jarvis),
-        ("p5-f1tenth.svg", "P5", "F1TENTH", "AUTONOMOUS RACING", PINK, art_f1tenth),
-        ("p6-codered.svg", "P6", "CodeRed", "VOICE KITCHEN ASSISTANT", RED, art_codered),
+        ("p1-f1tenth.svg", "P1", "F1TENTH", "AUTONOMOUS RACING", PINK, art_f1tenth),
+        ("p2-nova1811.svg", "P2", "Nova 1811", "NOVA / UT DALLAS", GREEN, art_nova),
+        ("p3-rsna.svg", "P3", "RSNA Knee", "KAGGLE / KNEE MRI", PINK, art_rsna),
+        ("p4-arkos.svg", "P4", "Arkos", "HACK AI 2025", AMBER, art_arkos),
+        ("p5-ovascope.svg", "P5", "OvaScope", "MEDICAL IMAGING", CYAN, art_ovascope),
+        ("p6-jarvis.svg", "P6", "Jarvis", "PERSONAL AI ASSISTANT", CYAN, art_jarvis),
+        ("p7-codered.svg", "P7", "CodeRed", "VOICE KITCHEN ASSISTANT", RED, art_codered),
     ]
     for fname, pos, name, tag, accent, art in winners:
         body, defs = art()
