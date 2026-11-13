@@ -17,7 +17,7 @@ OUT = Path(__file__).resolve().parent.parent / "assets"
 
 BG, PANEL, LINE = "#070b14", "#0b1220", "#1c2a47"
 CYAN, PINK, AMBER, GREEN, RED = "#22d3ee", "#ff3d9a", "#ffb224", "#3dffa2", "#ff4d5e"
-TEXT, DIM = "#e6eefb", "#7388a8"
+TEXT, DIM, GOLD = "#e6eefb", "#7388a8", "#ffcf4a"
 MONO = "ui-monospace,'SF Mono','Cascadia Code','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace"
 
 
@@ -341,7 +341,7 @@ def hero() -> str:
     name, name_grad = name_block("AAROH NANOTI", 58, 60, 42, 58, 13, 32)
     b.append(f'<text x="58" y="42" font-size="12" letter-spacing="5" fill="{DIM}">HELLO WORLD, I\'M</text>')
     b.append(name)
-    b.append(typed_lines(["CS @ UT Dallas", "autonomous vehicles + ADAS", "medical-imaging ML", "LLM agents that ship"], 84, 164, 440))
+    b.append(typed_lines(["CS @ UT Dallas", "5x hackathon winner", "autonomous vehicles + ADAS", "medical-imaging ML", "LLM agents that ship"], 84, 164, 440))
     b.append(f'<text x="58" y="192" font-size="12.5" letter-spacing="1.5" fill="{DIM}">systems that perceive, decide, and move</text>')
 
     # HUD
@@ -412,6 +412,13 @@ def header(idx: str, label: str, accent: str, mode: str = "car", seed: int = 0) 
             f'<text x="700" y="42" text-anchor="end" font-size="12" letter-spacing="3" fill="{accent}" opacity="0">LIGHTS OUT'
             '<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.767;0.98" calcMode="discrete" dur="6s" repeatCount="indefinite"/></text>'
         )
+    elif mode == "trophy":
+        for i in range(5):
+            on, off = (0.5 + i * 0.6) / 6, 5.2 / 6
+            b.append(
+                f'<g opacity=".2">{trophy(750 + i * 44, 20, 1.35, GOLD)}'
+                f'<animate attributeName="opacity" values=".2;1;.2" keyTimes="0;{on:.3f};{off:.3f}" calcMode="discrete" dur="6s" repeatCount="indefinite"/></g>'
+            )
     elif mode == "shift":
         for i in range(15):
             c = GREEN if i < 5 else (AMBER if i < 10 else RED)
@@ -434,15 +441,33 @@ def header(idx: str, label: str, accent: str, mode: str = "car", seed: int = 0) 
 
 
 # ── project cards ────────────────────────────────────────────────────────────
-def card(pos: str, name: str, tag: str, accent: str, art: str, defs: str = "") -> str:
+TROPHY = (
+    '<path d="M6,2 H18 V9 A6,6 0 0 1 6,9 Z M10.5,14.5 H13.5 V19 H10.5 Z M7,19 H17 V22 H7 Z" stroke-width="0"/>'
+    '<path d="M6,4 H2.5 V7 A3.5,3.5 0 0 0 6,10.5 M18,4 H21.5 V7 A3.5,3.5 0 0 1 18,10.5" fill="none" stroke-width="1.7"/>'
+)
+
+
+def trophy(x: float, y: float, scale: float, color: str = "url(#gold)") -> str:
+    return f'<g transform="translate({n(x)},{n(y)}) scale({scale})" fill="{color}" stroke="{color}">{TROPHY}</g>'
+
+
+GOLD_GRAD = (
+    '<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1a8"/>'
+    f'<stop offset=".5" stop-color="{GOLD}"/><stop offset="1" stop-color="#e08a00"/></linearGradient>'
+)
+
+
+def card(pos: str, name: str, tag: str, accent: str, art: str, defs: str = "", badge: str | None = None) -> str:
     W, H = 600, 250
+    plain = pos.replace("&#215;", "x")
+    bw = max(46, 20 + round(len(plain) * 9.6))
     grid = '<pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25,0 H0 V25" fill="none" stroke="#111c33"/></pattern>'
     b = (
         f'<rect width="{W}" height="{H}" fill="{PANEL}"/><rect width="{W}" height="{H}" fill="url(#grid)"/>'
         f"{art}"
-        f'<rect x="18" y="18" width="46" height="28" rx="7" fill="{accent}"/>'
-        f'<text x="41" y="38" text-anchor="middle" font-size="15" font-weight="800" fill="{BG}">{pos}</text>'
-        f'<text x="76" y="37" font-size="12" letter-spacing="3" fill="{DIM}">{tag}</text>'
+        f'<rect x="18" y="18" width="{bw}" height="28" rx="7" fill="{badge or accent}"/>'
+        f'<text x="{n(18 + bw / 2)}" y="38" text-anchor="middle" font-size="15" font-weight="800" fill="{BG}">{pos}</text>'
+        f'<text x="{18 + bw + 12}" y="37" font-size="12" letter-spacing="3" fill="{DIM}">{tag}</text>'
         f'<text x="20" y="216" font-size="32" font-weight="800" fill="{TEXT}">{name}</text>'
         f'<rect x="20" y="227" width="56" height="3" fill="{accent}"/>'
         + brackets(W, H, accent, 10, 14, 0.55)
@@ -619,6 +644,179 @@ def art_quada() -> tuple[str, str]:
     return "".join(out), ""
 
 
+def art_harmoniq() -> tuple[str, str]:
+    tx, ty = 336, 112
+    out = [
+        f'<path d="M{tx},{ty} L{tx - 17},{ty + 86} M{tx},{ty} L{tx + 17},{ty + 86} M{tx - 9},{ty + 46} H{tx + 9} M{tx - 13},{ty + 66} H{tx + 13}" '
+        f'fill="none" stroke="{CYAN}" stroke-width="2" stroke-linecap="round"/>',
+        f'<circle cx="{tx}" cy="{ty}" r="4.5" fill="{CYAN}"/>',
+    ]
+    for k, rad in enumerate((15, 26, 37)):
+        dx, dy = rad * 0.72, rad * 0.69
+        for sgn, sweep in ((1, 1), (-1, 0)):
+            out.append(
+                f'<path d="M{n(tx + sgn * dx)},{n(ty - dy)} A{rad},{rad} 0 0 {sweep} {n(tx + sgn * dx)},{n(ty + dy)}" fill="none" '
+                f'stroke="{CYAN}" stroke-width="2" stroke-linecap="round"><animate attributeName="opacity" values=".12;1;.12" dur="1.8s" '
+                f'begin="-{n(1.8 - k * 0.3)}s" repeatCount="indefinite"/></path>'
+            )
+    out.append(
+        f'<circle cx="412" cy="74" r="5" fill="none" stroke="{RED}" stroke-width="1.5">'
+        '<animate attributeName="r" values="5;18" dur="1.4s" repeatCount="indefinite"/>'
+        '<animate attributeName="opacity" values="1;0" dur="1.4s" repeatCount="indefinite"/></circle>'
+        f'<circle cx="412" cy="74" r="4.5" fill="{RED}"/>'
+        f'<text x="424" y="78" font-size="10.5" letter-spacing="1" fill="{RED}">outage risk</text>'
+    )
+    gx, gy, gr = 492, 178, 62
+    arc = f"M{gx - gr},{gy} A{gr},{gr} 0 0 1 {gx + gr},{gy}"
+    out.append(f'<path d="{arc}" fill="none" stroke="#141d33" stroke-width="14"/>')
+    for k, col in enumerate((RED, AMBER, GREEN)):
+        out.append(
+            f'<path d="{arc}" fill="none" stroke="{col}" stroke-width="10" pathLength="3" stroke-dasharray=".94 2.06" '
+            f'stroke-dashoffset="{-k - 0.03}" opacity=".9"/>'
+        )
+    rot = ";".join(f"{a} {gx} {gy}" for a in (-62, -20, -48, 55, 30, 62, -62))
+    out.append(
+        f'<g><path d="M{gx},{gy} V{gy - gr + 12}" stroke="{TEXT}" stroke-width="3" stroke-linecap="round"/>'
+        f'<animateTransform attributeName="transform" type="rotate" values="{rot}" keyTimes="0;.15;.3;.55;.7;.88;1" dur="7s" repeatCount="indefinite"/></g>'
+        f'<circle cx="{gx}" cy="{gy}" r="6" fill="{TEXT}"/>'
+        f'<text x="{gx}" y="{gy + 26}" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="3" fill="{DIM}">CHI</text>'
+        f'<text x="582" y="236" text-anchor="end" font-size="10" letter-spacing="1" fill="{DIM}">customer happiness index</text>'
+    )
+    return "".join(out), ""
+
+
+def art_rsna() -> tuple[str, str]:
+    out = [
+        f'<rect x="{318 + ox}" y="{30 + oy}" width="128" height="172" rx="9" fill="#060911" stroke="#2b3f73" stroke-width="1.5" opacity="{op}"/>'
+        for ox, oy, op in ((-16, 16, 0.45), (-8, 8, 0.7), (0, 0, 1))
+    ]
+    out.append(
+        '<g fill="#cdd9ee" opacity=".88">'
+        '<path d="M364,38 V92 C352,100 347,116 355,127 C365,138 397,138 407,127 C415,116 410,100 398,92 V38 Z"/>'
+        '<path d="M352,150 H410 L402,164 L400,196 H364 L360,164 Z"/>'
+        '<ellipse cx="424" cy="112" rx="6.5" ry="14" opacity=".8"/></g>'
+        '<path d="M356,141 L372,146 L356,148 Z M406,141 L390,146 L406,148 Z" fill="#6f84a8"/>'
+        '<circle cx="381" cy="143" r="15" fill="url(#heat)"><animate attributeName="r" values="12;21;12" dur="2.2s" repeatCount="indefinite"/></circle>'
+        f'<path d="M362,131 v-6 h6 M400,131 v-6 h-6 M362,155 v6 h6 M400,155 v6 h-6" fill="none" stroke="{CYAN}" stroke-width="1.6"/>'
+        f'<rect x="319" y="32" width="126" height="2" fill="{GREEN}" opacity=".6">'
+        '<animate attributeName="y" values="32;198;32" dur="4.5s" repeatCount="indefinite"/></rect>'
+    )
+    for i, v in enumerate((0.91, 0.34, 0.78, 0.22, 0.63, 0.18, 0.47, 0.85, 0.3, 0.12, 0.56, 0.08)):
+        y, hot = 36 + i * 14.2, v > 0.6
+        out.append(
+            f'<rect x="468" y="{n(y)}" width="112" height="7" rx="3.5" fill="#141d33"/>'
+            f'<rect x="468" y="{n(y)}" width="0" height="7" rx="3.5" fill="{PINK if hot else CYAN}" opacity="{1 if hot else 0.75}">'
+            f'<animate attributeName="width" values="0;{n(112 * v)};{n(112 * v)};0" keyTimes="0;.2;.92;1" dur="6s" begin="{n(i * 0.08)}s" repeatCount="indefinite"/></rect>'
+        )
+    out.append(f'<text x="582" y="224" text-anchor="end" font-size="10" letter-spacing="1" fill="{DIM}">12 findings per study</text>')
+    defs = (
+        f'<radialGradient id="heat"><stop offset="0" stop-color="{PINK}" stop-opacity=".95"/>'
+        f'<stop offset=".5" stop-color="{AMBER}" stop-opacity=".55"/><stop offset="1" stop-color="{AMBER}" stop-opacity="0"/></radialGradient>'
+    )
+    return "".join(out), defs
+
+
+def art_arkos() -> tuple[str, str]:
+    def load(x: float) -> float:  # daily demand cycle with a slow upward drift
+        return 138 - 34 * math.sin((x - 300) / 280 * 2 * math.pi * 2.5) - (x - 300) * 0.06
+
+    def line(pts: list[tuple[float, float]]) -> str:
+        return "M" + " L".join(f"{x},{n(y)}" for x, y in pts)
+
+    hist = [(x, load(x)) for x in range(300, 441, 5)]
+    fut = [(x, load(x) - (x - 440) * 0.05) for x in range(440, 581, 5)]
+    band = (
+        "M" + " L".join(f"{x},{n(y - 7 - (x - 440) * 0.11)}" for x, y in fut)
+        + " L" + " L".join(f"{x},{n(y + 7 + (x - 440) * 0.11)}" for x, y in reversed(fut)) + " Z"
+    )
+    T = 6
+    stroke = 'fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"'
+    out = (
+        '<path d="M300,74 V200 H584" fill="none" stroke="#2b3f73" stroke-width="1.5"/>'
+        f'<path d="M440,58 V200" stroke="{DIM}" stroke-dasharray="3 5"/>'
+        f'<text x="446" y="66" font-size="9" letter-spacing="1" fill="{DIM}">NOW</text>'
+        f'<path d="{band}" fill="{AMBER}" opacity="0"><animate attributeName="opacity" values="0;0;.22;.22;0" keyTimes="0;.4;.62;.92;1" dur="{T}s" repeatCount="indefinite"/></path>'
+        f'<path d="{line(hist)}" stroke="{CYAN}" {stroke}>'
+        f'<animate attributeName="stroke-dashoffset" values="1;0;0;1" keyTimes="0;.35;.92;1" dur="{T}s" repeatCount="indefinite"/></path>'
+        f'<path d="{line(fut)}" stroke="{AMBER}" {stroke} stroke-dashoffset="1">'
+        f'<animate attributeName="stroke-dashoffset" values="1;1;0;0;1" keyTimes="0;.35;.62;.92;1" dur="{T}s" repeatCount="indefinite"/></path>'
+        f'<path d="M332,24 l-13,23 h9 l-5,19 l16,-27 h-9 l6,-15 Z" fill="{AMBER}"><animate attributeName="opacity" values="1;.45;1" dur="1.6s" repeatCount="indefinite"/></path>'
+        f'<text x="582" y="224" text-anchor="end" font-size="10" letter-spacing="1" fill="{DIM}">LSTM demand forecast</text>'
+    )
+    return out, ""
+
+
+def art_codered() -> tuple[str, str]:
+    mx, my = 340, 104
+    out = [
+        f'<circle cx="{mx}" cy="{my}" r="{rad}" fill="none" stroke="{RED}" stroke-width="1.5" opacity="0">'
+        f'<animate attributeName="opacity" values="0;.7;0" dur="2.1s" begin="-{n(2.1 - k * 0.35)}s" repeatCount="indefinite"/></circle>'
+        for k, rad in enumerate((30, 43, 56))
+    ]
+    out.append(
+        f'<rect x="{mx - 11}" y="{my - 26}" width="22" height="40" rx="11" fill="{RED}"/>'
+        f'<path d="M{mx - 18},{my + 2} a18,18 0 0 0 36,0 M{mx},{my + 20} v12 M{mx - 10},{my + 32} h20" fill="none" stroke="{TEXT}" '
+        'stroke-width="2.5" stroke-linecap="round"/>'
+        '<path d="M434,110 H582 M434,192 H582" stroke="#2b3f73" stroke-width="3" stroke-linecap="round"/>'
+    )
+    items = [
+        (446, 108, 22, 30, CYAN), (478, 108, 28, 40, AMBER), (516, 108, 14, 46, GREEN), (540, 108, 22, 26, PINK),
+        (446, 190, 30, 34, PINK), (486, 190, 22, 28, GREEN), (518, 190, 24, 44, CYAN), (552, 190, 18, 22, AMBER),
+    ]
+    for x, base, w, h, c in items:
+        out.append(
+            f'<rect x="{x}" y="{base - h}" width="{w}" height="{h}" rx="3" fill="{c}" fill-opacity=".18" stroke="{c}" stroke-width="1.6"/>'
+            f'<rect x="{x + 3}" y="{n(base - h + h * 0.38)}" width="{w - 6}" height="{n(max(4, h * 0.22))}" fill="{c}" opacity=".7"/>'
+        )
+    stops = [(x - 5, base - h - 6, w + 10, h + 11) for x, base, w, h, _ in (items[1], items[3], items[4], items[6])]
+    hops = "".join(
+        f'<animate attributeName="{attr}" values="{";".join(str(s[i]) for s in stops)}" calcMode="discrete" dur="6s" repeatCount="indefinite"/>'
+        for i, attr in enumerate(("x", "y", "width", "height"))
+    )
+    x0, y0, w0, h0 = stops[0]
+    out.append(
+        f'<rect x="{x0}" y="{y0}" width="{w0}" height="{h0}" fill="{GREEN}" fill-opacity=".08" stroke="{GREEN}" stroke-width="1.5" stroke-dasharray="5 3">{hops}</rect>'
+        f'<text x="582" y="224" text-anchor="end" font-size="10" letter-spacing="1" fill="{DIM}">wake word / pantry / vision</text>'
+    )
+    return "".join(out), ""
+
+
+# ── trophy wall ──────────────────────────────────────────────────────────────
+def wins() -> str:
+    W, H = 1000, 210
+    r = random.Random(21)
+    items = [
+        ("HACK AI 2026", "DALLAS AI TRACK"), ("AXXESS 2026", "AI HEALTH PARTNER"), ("HACKUTD 2025", "T-MOBILE"),
+        ("HACKUTD 2025", "BEST USE OF AUTH0"), ("FINHACK 2025", "WINNER"),
+    ]
+    b = [f'<rect width="{W}" height="{H}" fill="{PANEL}"/><rect width="{W}" height="{H}" fill="url(#grid)"/>']
+    for _ in range(20):
+        x, c = r.uniform(290, 985), r.choice([GOLD, PINK, CYAN, GREEN])
+        b.append(
+            f'<rect x="{n(x)}" y="-12" width="4" height="9" rx="1" fill="{c}" opacity=".45" transform="rotate({r.randint(-25, 25)} {n(x)} 0)">'
+            f'<animate attributeName="y" values="-12;{H + 12}" dur="{n(r.uniform(4, 8))}s" begin="-{n(r.uniform(0, 8))}s" repeatCount="indefinite"/></rect>'
+        )
+    b.append(
+        '<text x="36" y="128" font-size="108" font-weight="800" fill="url(#gold)">5&#215;</text>'
+        f'<text x="40" y="168" font-size="15" font-weight="700" letter-spacing="5" fill="{TEXT}">HACKATHON WINS</text>'
+        f'<path d="M270,30 V180" stroke="{LINE}" stroke-width="1.5"/>'
+    )
+    star = "M0,-7 L1.6,-1.6 L7,0 L1.6,1.6 L0,7 L-1.6,1.6 L-7,0 L-1.6,-1.6 Z"
+    for i, (event, prize) in enumerate(items):
+        cx, a = 350 + i * 140, 0.08 + i * 0.13
+        b.append(
+            f'<g>{trophy(cx - 33.6, 30, 2.8)}<animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -9;0 0;0 0" '
+            f'keyTimes="0;{a:.2f};{a + 0.04:.2f};{a + 0.09:.2f};1" dur="6s" repeatCount="indefinite"/></g>'
+            f'<path transform="translate({cx + 26},{40})" d="{star}" fill="#fff" opacity="0"><animate attributeName="opacity" values="0;1;0" '
+            f'dur="1.9s" begin="-{n(r.uniform(0, 1.9))}s" repeatCount="indefinite"/></path>'
+            f'<text x="{cx}" y="132" text-anchor="middle" font-size="13.5" font-weight="700" letter-spacing="1.5" fill="{TEXT}">{event}</text>'
+            f'<text x="{cx}" y="152" text-anchor="middle" font-size="10.5" letter-spacing="1" fill="{GOLD}">{prize}</text>'
+        )
+    b.append(brackets(W, H, GOLD, 10, 14, 0.55))
+    grid = '<pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25,0 H0 V25" fill="none" stroke="#111c33"/></pattern>'
+    return svg(W, H, "".join(b), grid + GOLD_GRAD, title="Five hackathon wins: Hack AI 2026, Axxess 2026, HackUTD 2025 (two prizes), FinHack 2025")
+
+
 # ── radar ────────────────────────────────────────────────────────────────────
 def radar() -> str:
     W = H = 420
@@ -704,8 +902,9 @@ def main() -> None:
     files = {
         "hero.svg": hero(),
         "h-profile.svg": header("01", "DRIVER PROFILE", CYAN, "car", 1),
-        "h-grid.svg": header("02", "STARTING GRID", PINK, "lights"),
-        "h-pitlane.svg": header("03", "PIT LANE", AMBER, "car", 3),
+        "h-podium.svg": header("02", "PODIUM", GOLD, "trophy"),
+        "wins.svg": wins(),
+        "h-grid.svg": header("03", "STARTING GRID", PINK, "lights"),
         "h-power.svg": header("04", "POWER UNIT", GREEN, "shift"),
         "h-radio.svg": header("05", "TEAM RADIO", CYAN, "radio", 5),
         "radar.svg": radar(),
@@ -713,17 +912,29 @@ def main() -> None:
         "btn-email.svg": button("EMAIL", PINK, 200),
         "btn-github.svg": button("ALL REPOS", CYAN, 240),
     }
-    cards = [
-        ("p1-ovascope.svg", "P1", "OvaScope", "MEDICAL IMAGING", CYAN, art_ovascope),
-        ("p2-pondr.svg", "P2", "Pondr", "HACKAI 2026", GREEN, art_pondr),
-        ("p3-maternalguard.svg", "P3", "MaternalGuard", "AXXESS HACKATHON 2026", PINK, art_maternal),
+    winners = [
+        ("w1-pondr.svg", "WINNER", "Pondr", "HACK AI 2026", GREEN, art_pondr),
+        ("w2-maternalguard.svg", "WINNER", "MaternalGuard", "AXXESS HACKATHON 2026", PINK, art_maternal),
+        ("w3-harmoniq.svg", "2&#215; WINNER", "HarmoniQ", "HACKUTD 2025", CYAN, art_harmoniq),
+        ("w4-quada.svg", "WINNER", "QUADA", "FINHACK 2025", AMBER, art_quada),
+    ]
+    grid = [
+        ("p1-rsna.svg", "P1", "RSNA Knee", "KAGGLE / KNEE MRI", PINK, art_rsna),
+        ("p2-arkos.svg", "P2", "Arkos", "HACK AI 2025", AMBER, art_arkos),
+        ("p3-ovascope.svg", "P3", "OvaScope", "MEDICAL IMAGING", CYAN, art_ovascope),
         ("p4-jarvis.svg", "P4", "Jarvis", "PERSONAL AI ASSISTANT", CYAN, art_jarvis),
         ("p5-f1tenth.svg", "P5", "F1TENTH", "AUTONOMOUS RACING", PINK, art_f1tenth),
-        ("p6-quada.svg", "P6", "QUADA", "FINHACK WINNER", AMBER, art_quada),
+        ("p6-codered.svg", "P6", "CodeRed", "VOICE KITCHEN ASSISTANT", RED, art_codered),
     ]
-    for fname, pos, name, tag, accent, art in cards:
+    for fname, pos, name, tag, accent, art in winners:
+        body, defs = art()
+        files[fname] = card(pos, name, tag, accent, body, defs, badge=GOLD)
+    for fname, pos, name, tag, accent, art in grid:
         body, defs = art()
         files[fname] = card(pos, name, tag, accent, body, defs)
+    for stale in OUT.glob("*.svg"):
+        if stale.name not in files:
+            stale.unlink()
     for fname, content in files.items():
         (OUT / fname).write_text(content, encoding="utf-8", newline="\n")
         print(f"{fname:24} {len(content) / 1024:5.1f} KB")

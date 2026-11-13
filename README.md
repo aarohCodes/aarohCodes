@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-  <b>Aaroh Nanoti</b> · Computer Science @ UT Dallas<br/>
+  <b>Aaroh Nanoti</b> · Computer Science @ UT Dallas · 🏆 5× hackathon winner<br/>
   I build systems that perceive, decide, and move: autonomous vehicles, medical-imaging ML, and LLM agents.
 </p>
 
@@ -15,39 +15,82 @@
 
 I'm a computer science student at UT Dallas. I like problems where software has to deal with the real world: a car that has to see the track, a scan a clinician has to trust, an assistant that has to actually get the thing done.
 
+- 🏁 **Hackathons**: 5 wins across Hack AI, Axxess, HackUTD, and FinHack
 - 🏎️ **Autonomous vehicles and ADAS**: ROS 2, F1TENTH racing, dSPACE ASM simulation
 - 🩻 **Medical-imaging ML** that reports its own limits: confidence intervals, leakage audits, abstention
 - 🧠 **LLM agents** with tool calling and voice interfaces
 - ⚡ **Energy systems**: LSTM demand forecasting
-- 🏁 **Hackathons**: HackAI, Axxess, FinHack (winner), T-Mobile challenge
 
 <sub>Fun fact: I debug code faster than I debug my life.</sub>
 
 <br clear="both"/>
 
-<img src="./assets/h-grid.svg" width="100%" alt="02 / Starting grid: featured projects" />
+<img src="./assets/h-podium.svg" width="100%" alt="02 / Podium: hackathon wins" />
+
+<img src="./assets/wins.svg" width="100%" alt="Five hackathon wins: Hack AI 2026, Axxess 2026, HackUTD 2025 twice, FinHack 2025" />
+
+| | Award | Hackathon | Project |
+| :-: | :-- | :-- | :-- |
+| 🏆 | **Winner**, Dallas AI sponsor track | Hack AI 2026 | [Pondr](https://devpost.com/software/cortex-23qedp) |
+| 🏆 | **Winner**, AI-Driven Preventative Health Partner | Axxess Hackathon 2026 | [MaternalGuard](https://devpost.com/software/xxx-spie1l) |
+| 🏆 | **Winner**, T-Mobile challenge | HackUTD 2025 | [HarmoniQ](https://devpost.com/software/x-yiqm81) |
+| 🏆 | **Winner**, Best Use of Auth0 | HackUTD 2025 | [HarmoniQ](https://devpost.com/software/x-yiqm81) |
+| 🏆 | **Winner** | FinHack 2025 | [QUADA](https://github.com/aarohCodes/Robo-Advisory-Portfolio-Optimizer) |
 
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/OvaScope_Meta_2026"><img src="./assets/p1-ovascope.svg" width="100%" alt="P1 OvaScope: an ultrasound sweep finds a lesion, draws a box prompt, then a segmentation mask" /></a>
-<b><a href="https://github.com/aarohCodes/OvaScope_Meta_2026">OvaScope</a></b><br/>
-Ovarian ultrasound analysis with inspectable evidence. Asks whether lesion localisation (a DINOv2 patch localiser prompting SAM 2.1) beats whole-image classification on eight MMOTU categories, then reports what the data says: bootstrap confidence intervals, a near-duplicate leakage audit, and an abstain path. Research prototype, not a diagnostic.<br/>
-<sub><code>PyTorch</code> <code>DINOv2</code> <code>SAM 2.1</code> <code>FastAPI</code> <code>Next.js</code> <code>Docker</code></sub>
+<a href="https://devpost.com/software/cortex-23qedp"><img src="./assets/w1-pondr.svg" width="100%" alt="Pondr, winner at Hack AI 2026: a knowledge graph whose nodes fade from green to red, then refresh" /></a>
+<b><a href="https://devpost.com/software/cortex-23qedp">Pondr</a></b> 🏆<br/>
+Turns what you're learning into a living knowledge graph. An XGBoost model personalises the Ebbinghaus forgetting curve for each concept to predict what you're about to forget, and a Gemini tutor explains, quizzes, and schedules the review before it slips. Built with a team of four.<br/>
+<sub><code>FastAPI</code> <code>XGBoost</code> <code>Gemini</code> <code>MongoDB</code> <code>React Flow</code> <code>ElevenLabs</code> · <a href="https://github.com/aarohCodes/HackAI2026">code</a></sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/HackAI2026"><img src="./assets/p2-pondr.svg" width="100%" alt="P2 Pondr: a knowledge graph whose nodes fade from green to red, then refresh" /></a>
-<b><a href="https://github.com/aarohCodes/HackAI2026">Pondr</a></b><br/>
-Adaptive learning platform built for HackAI 2026. What you know becomes a live knowledge graph; an XGBoost model on Ebbinghaus forgetting curves predicts when each concept will fade, and a Gemini tutor schedules the review before it does.<br/>
-<sub><code>FastAPI</code> <code>XGBoost</code> <code>Gemini</code> <code>MongoDB</code> <code>React Flow</code> <code>ElevenLabs</code></sub>
+<a href="https://devpost.com/software/xxx-spie1l"><img src="./assets/w2-maternalguard.svg" width="100%" alt="MaternalGuard, winner at Axxess Hackathon 2026: a heartbeat trace above SHAP feature bars" /></a>
+<b><a href="https://devpost.com/software/xxx-spie1l">MaternalGuard</a></b> 🏆<br/>
+Clinical decision support for the weeks after birth. Predicts risk for five postpartum complications and explains every prediction with SHAP values a clinician can read. Trained on synthetic data; a prototype, not a medical device.<br/>
+<sub><code>XGBoost</code> <code>SHAP</code> <code>FastAPI</code> <code>Next.js</code> <code>Tailwind</code> · <a href="https://github.com/aarohCodes/AxxessHackathon2026">code</a></sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/AxxessHackathon2026"><img src="./assets/p3-maternalguard.svg" width="100%" alt="P3 MaternalGuard: a heartbeat trace above SHAP feature bars" /></a>
-<b><a href="https://github.com/aarohCodes/AxxessHackathon2026">MaternalGuard</a></b><br/>
-Clinical decision-support prototype from Axxess Hackathon 2026. Predicts risk for five postpartum complications and explains each prediction with SHAP values a clinician can read. Trained on synthetic data.<br/>
-<sub><code>XGBoost</code> <code>SHAP</code> <code>FastAPI</code> <code>Next.js</code> <code>Recharts</code></sub>
+<a href="https://devpost.com/software/x-yiqm81"><img src="./assets/w3-harmoniq.svg" width="100%" alt="HarmoniQ, two prizes at HackUTD 2025: a cell tower, an outage alert, and a customer happiness gauge" /></a>
+<b><a href="https://devpost.com/software/x-yiqm81">HarmoniQ</a></b> 🏆🏆<br/>
+A command center that ties network health to how customers feel. Combines network performance data with live Reddit and X sentiment, predicts regional outages with Random Forest and gradient boosting, and rolls it all into a Customer Happiness Index, with a Gemini assistant explaining what changed. Built with a team of four.<br/>
+<sub><code>React</code> <code>Flask</code> <code>scikit-learn</code> <code>Gemini</code> <code>Auth0</code> <code>Tailwind</code> · <a href="https://github.com/aarohCodes/HarmoniQ-T-Mobile-Challenge">code</a></sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/aarohCodes/Robo-Advisory-Portfolio-Optimizer"><img src="./assets/w4-quada.svg" width="100%" alt="QUADA, winner at FinHack 2025: an efficient frontier draws itself and marks the max-Sharpe portfolio" /></a>
+<b><a href="https://github.com/aarohCodes/Robo-Advisory-Portfolio-Optimizer">QUADA</a></b> 🏆<br/>
+Robo-advisor that builds ESG-aware portfolios across risk profiles and pairs them with a Gemini-powered investment chat.<br/>
+<sub><code>React</code> <code>Flask</code> <code>Gemini</code> <code>Tailwind</code> <code>Google OAuth</code></sub>
+</td>
+</tr>
+</table>
+
+<img src="./assets/h-grid.svg" width="100%" alt="03 / Starting grid: more builds" />
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/aarohCodes/rsna-knee-abnormality-detection"><img src="./assets/p1-rsna.svg" width="100%" alt="P1 RSNA Knee: a knee MRI slice is scanned, a finding lights up, and twelve probability bars fill" /></a>
+<b><a href="https://github.com/aarohCodes/rsna-knee-abnormality-detection">RSNA Knee Abnormality Detection</a></b><br/>
+RSNA's Kaggle code competition: predict 12 knee abnormalities per MRI study, from ACL and meniscus tears to effusion and fractures. Labels expanded from multilingual radiology reports, multi-slice models, and a rank-mean ensemble blended on a clean holdout, all inside a 9-hour offline kernel. 0.938 macro-AUC on the public leaderboard.<br/>
+<sub><code>PyTorch</code> <code>DICOM</code> <code>ensembling</code> <code>Kaggle Kernels</code></sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform"><img src="./assets/p2-arkos.svg" width="100%" alt="P2 Arkos: an energy demand curve draws itself, then a forecast with a confidence band" /></a>
+<b><a href="https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform">Arkos</a></b><br/>
+AI energy advisory platform with LSTM demand forecasting, built with a team at Hack AI 2025. It analyses consumption patterns, forecasts demand, and recommends where to save. 15% improvement in energy efficiency.<br/>
+<sub><code>TensorFlow</code> <code>LSTM</code> <code>Python</code></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/aarohCodes/OvaScope_Meta_2026"><img src="./assets/p3-ovascope.svg" width="100%" alt="P3 OvaScope: an ultrasound sweep finds a lesion, draws a box prompt, then a segmentation mask" /></a>
+<b><a href="https://github.com/aarohCodes/OvaScope_Meta_2026">OvaScope</a></b><br/>
+Ovarian ultrasound analysis with inspectable evidence. Asks whether lesion localisation (a DINOv2 patch localiser prompting SAM 2.1) beats whole-image classification on eight MMOTU categories, then reports what the data says: bootstrap confidence intervals, a near-duplicate leakage audit, and an abstain path. Research prototype, not a diagnostic.<br/>
+<sub><code>PyTorch</code> <code>DINOv2</code> <code>SAM 2.1</code> <code>FastAPI</code> <code>Next.js</code> <code>Docker</code></sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/aarohCodes/Jarvis"><img src="./assets/p4-jarvis.svg" width="100%" alt="P4 Jarvis: rotating reactor rings above a voice waveform" /></a>
@@ -64,23 +107,15 @@ ROS 2 workspace for the F1TENTH 1/10-scale autonomous racing platform: Ackermann
 <sub><code>ROS 2</code> <code>rclpy</code> <code>Ackermann</code> <code>f1tenth_gym_ros</code></sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/aarohCodes/Robo-Advisory-Portfolio-Optimizer"><img src="./assets/p6-quada.svg" width="100%" alt="P6 QUADA: an efficient frontier draws itself and marks the max-Sharpe portfolio" /></a>
-<b><a href="https://github.com/aarohCodes/Robo-Advisory-Portfolio-Optimizer">QUADA</a></b> 🏆<br/>
-FinHack-winning robo-advisor. Builds ESG-aware portfolios across risk profiles and pairs them with a Gemini-powered investment chat.<br/>
-<sub><code>React</code> <code>Flask</code> <code>Gemini</code> <code>Tailwind</code> <code>Google OAuth</code></sub>
+<a href="https://github.com/aarohCodes/CodeRed"><img src="./assets/p6-codered.svg" width="100%" alt="P6 CodeRed: a microphone listens while a scanner steps across pantry shelves" /></a>
+<b><a href="https://github.com/aarohCodes/CodeRed">CodeRed</a></b><br/>
+Voice-first kitchen assistant. Say the wake word, ask what's in the pantry, or scan groceries with the camera to add them to the inventory.<br/>
+<sub><code>Python</code> <code>Gemini</code> <code>ElevenLabs</code> <code>JavaScript</code></sub>
 </td>
 </tr>
 </table>
 
-<img src="./assets/h-pitlane.svg" width="100%" alt="03 / Pit lane: more builds" />
-
-| Build | What it does | Stack |
-| :-- | :-- | :-- |
-| **[Arkos](https://github.com/aarohCodes/AI-Driven-Energy-Advisory-and-LSTM-Prediction-Platform)** | HackAI 2025 team project. AI energy advisory with LSTM demand forecasting; 15% improvement in energy efficiency. | `TensorFlow` `LSTM` `Python` |
-| **[Network Optimizer](https://github.com/aarohCodes/HarmoniQ-T-Mobile-Challenge)** | T-Mobile challenge team project. Forecasts cellular network demand and recommends where to allocate capacity. | `Prophet` `scikit-learn` `Flask` `React` |
-| **[CodeRed](https://github.com/aarohCodes/CodeRed)** | Voice-first kitchen assistant: wake word, pantry inventory, image scanning. | `Python` `Gemini` `ElevenLabs` |
-| **[FlowCraft](https://github.com/aarohCodes/FlowCraft)** | AI productivity suite: tasks, flashcards, email triage, meeting transcripts. | `React` `TypeScript` `Supabase` |
-| **RSNA Knee** 🔒 | Knee abnormality detection for the RSNA Kaggle competition. Private working repo. | `Medical imaging` `Kaggle` |
+<sub>Also in the garage: <a href="https://github.com/aarohCodes/FlowCraft">FlowCraft</a>, an AI productivity suite for tasks, flashcards, email triage and meeting transcripts (React, TypeScript, Supabase).</sub>
 
 <img src="./assets/h-power.svg" width="100%" alt="04 / Power unit: tech stack" />
 
@@ -89,7 +124,7 @@ FinHack-winning robo-advisor. Builds ESG-aware portfolios across risk profiles a
 | **Engine** <br/><sub>languages</sub> | <kbd>Python</kbd> <kbd>TypeScript</kbd> <kbd>JavaScript</kbd> <kbd>C++</kbd> <kbd>Java</kbd> <kbd>SQL</kbd> |
 | **Perception** <br/><sub>ML</sub> | <kbd>PyTorch</kbd> <kbd>TensorFlow</kbd> <kbd>scikit-learn</kbd> <kbd>XGBoost</kbd> <kbd>SHAP</kbd> <kbd>DINOv2</kbd> <kbd>SAM 2.1</kbd> <kbd>pandas</kbd> <kbd>NumPy</kbd> |
 | **Driver aids** <br/><sub>LLMs and voice</sub> | <kbd>Claude API</kbd> <kbd>Gemini API</kbd> <kbd>OpenAI API</kbd> <kbd>tool calling</kbd> <kbd>ElevenLabs</kbd> |
-| **Chassis** <br/><sub>full stack</sub> | <kbd>FastAPI</kbd> <kbd>Flask</kbd> <kbd>Next.js</kbd> <kbd>React</kbd> <kbd>React Native</kbd> <kbd>Tailwind</kbd> |
+| **Chassis** <br/><sub>full stack</sub> | <kbd>FastAPI</kbd> <kbd>Flask</kbd> <kbd>Next.js</kbd> <kbd>React</kbd> <kbd>React Native</kbd> <kbd>Tailwind</kbd> <kbd>Auth0</kbd> |
 | **Fuel system** <br/><sub>data and infra</sub> | <kbd>PostgreSQL</kbd> <kbd>MongoDB</kbd> <kbd>Redis</kbd> <kbd>Supabase</kbd> <kbd>Docker</kbd> <kbd>Git</kbd> |
 | **Track tools** <br/><sub>robotics and sim</sub> | <kbd>ROS 2</kbd> <kbd>F1TENTH gym</kbd> <kbd>dSPACE ASM</kbd> |
 
